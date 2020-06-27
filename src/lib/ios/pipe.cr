@@ -26,14 +26,25 @@ module Cli::Ios
       end
     end
 
-    # Implements `IO#write`.
-    def write(slice : Slice(UInt8)) : Int64
-      if io = @writer
-        io.write slice
-      else
-        raise Closed.new("writer")
+    {% if compare_versions(Crystal::VERSION, "0.35.0") == 0 %}
+      # Implements `IO#write`.
+      def write(slice : Slice(UInt8)) : Int64
+        if io = @writer
+          io.write slice
+        else
+          raise Closed.new("writer")
+        end
       end
-    end
+    {% else %}
+      # Implements `IO#write`.
+      def write(slice : Slice(UInt8)) : Nil
+        if io = @writer
+          io.write slice
+        else
+          raise Closed.new("writer")
+        end
+      end
+    {% end %}
 
     # :nodoc:
     def close
