@@ -54,7 +54,7 @@ module Cli
 
     @snake_name : String?
     def snake_name
-      @snake_name ||= StringInflection.snake(@name)
+      @snake_name ||= @name.gsub(/[\s\-]+/, "_").underscore
     end
 
     # def initialize
