@@ -1,3 +1,8 @@
+# DEPRECATED
+
+This library is no longer being maintained. It is being kept online to allow for past versions of the Amber CLI to still compile on pre Crystal 1.14 releases.
+Message Date: July 22nd 2025
+
 # Crystal CLI
 
 Yet another Crystal library for building command-line interface applications.
